@@ -1,0 +1,60 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Components — Form fields</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  body { background: var(--bg); }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field label { font-size: 12px; color: var(--color-fg); font-weight: 600; }
+  .input {
+    font: 400 14px/1.4 var(--font-ui);
+    padding: 10px 12px;
+    border: 1px solid var(--neutral-300);
+    border-radius: 8px;
+    background: var(--paper);
+    color: var(--color-fg);
+    outline: none;
+    transition: border-color var(--duration-fast) var(--ease-standard),
+                box-shadow var(--duration-fast) var(--ease-standard);
+  }
+  .input::placeholder { color: var(--neutral-500); }
+  .input.focus { border-color: var(--marine-500); box-shadow: var(--shadow-focus); }
+  .input.error { border-color: var(--danger-400); box-shadow: 0 0 0 3px rgba(222, 53, 11, 0.18); }
+  .help { font-size: 11px; color: var(--color-fg-muted); }
+  .help.err { color: var(--danger-500); }
+
+  .check { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+  .check .box { width: 16px; height: 16px; border: 1.5px solid var(--neutral-300); border-radius: 4px; background: var(--paper); display: inline-flex; align-items: center; justify-content: center; }
+  .check.on .box { background: var(--marine-700); border-color: var(--marine-700); color: var(--paper); }
+  .check.on .box::after { content: "✓"; font-size: 11px; line-height: 1; }
+</style>
+</head><body>
+<div class="card">
+  <div class="grid">
+    <div class="field">
+      <label>Email</label>
+      <input class="input" placeholder="you@example.com">
+      <span class="help">We'll only use this for sign-in.</span>
+    </div>
+    <div class="field">
+      <label>Vessel name</label>
+      <input class="input focus" value="MV Northern Star">
+      <span class="help">Focused state</span>
+    </div>
+    <div class="field">
+      <label>Departure port</label>
+      <input class="input" value="Rotterdam">
+    </div>
+    <div class="field">
+      <label>Booking ID</label>
+      <input class="input error" value="BK-9211-X">
+      <span class="help err">That ID's already in use.</span>
+    </div>
+    <div class="field" style="grid-column: 1 / -1; flex-direction: row; gap: 16px; margin-top: 4px;">
+      <span class="check on"><span class="box"></span>Notify partners</span>
+      <span class="check"><span class="box"></span>Add to watchlist</span>
+      <span class="check"><span class="box"></span>Archive on completion</span>
+    </div>
+  </div>
+</div>
+</body></html>

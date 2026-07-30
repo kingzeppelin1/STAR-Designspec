@@ -1,0 +1,85 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Colors — Role Accents</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .scale { display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px; }
+  .chip { border-radius: 6px; height: 56px; display:flex; flex-direction: column; justify-content: space-between; padding: 5px 7px; }
+  .chip .step { font-family: var(--font-mono); font-size: 10px; opacity: .85; }
+  .chip .hex  { font-family: var(--font-mono); font-size: 9px; opacity: .7; }
+  .chip.dark { color: var(--paper); }
+  .name { display: flex; align-items: baseline; gap: 12px; margin-bottom: 10px; }
+  .name h3 { font-family: var(--font-display); font-size: 18px; font-weight: 600; margin: 0; color: var(--marine-700); }
+  .name .meta { font-family: var(--font-mono); font-size: 11px; color: var(--color-fg-muted); }
+  .stack { display: flex; flex-direction: column; gap: 14px; }
+  .role-row { display: grid; grid-template-columns: 132px 1fr; gap: 12px; align-items: center; }
+  .role-row .lbl { font-family: var(--font-display); font-size: 12px; }
+  .role-row .lbl strong { font-family: var(--font-display); font-size: 14px; display: block; }
+  .role-row .lbl em { font-style: normal; color: var(--color-fg-muted); font-size: 11px; }
+</style>
+</head><body>
+<div class="card">
+  <div class="name"><h3>Role accents</h3><span class="meta">Each color signals one specific UI meaning</span></div>
+  <div class="stack">
+    <div class="role-row">
+      <div class="lbl"><strong>Constant Brown</strong><em>Accent · Constant</em></div>
+      <div class="scale">
+        <div class="chip"      style="background:#F4EFED"><span class="step">50</span><span class="hex">F4EFED</span></div>
+        <div class="chip"      style="background:#DCCDC7"><span class="step">100</span><span class="hex">DCCDC7</span></div>
+        <div class="chip"      style="background:#CBB5AB"><span class="step">200</span><span class="hex">CBB5AB</span></div>
+        <div class="chip"      style="background:#B49385"><span class="step">300</span><span class="hex">B49385</span></div>
+        <div class="chip dark" style="background:#A57E6D"><span class="step">400</span><span class="hex">A57E6D</span></div>
+        <div class="chip dark" style="background:#8F5E49"><span class="step">500</span><span class="hex">8F5E49</span></div>
+        <div class="chip dark" style="background:#825642"><span class="step">600</span><span class="hex">825642</span></div>
+        <div class="chip dark" style="background:#664334"><span class="step">700</span><span class="hex">664334</span></div>
+        <div class="chip dark" style="background:#4F3428"><span class="step">800</span><span class="hex">4F3428</span></div>
+        <div class="chip dark" style="background:#3C271F"><span class="step">900</span><span class="hex">3C271F</span></div>
+      </div>
+    </div>
+    <div class="role-row">
+      <div class="lbl"><strong>Collaborate Aqua</strong><em>Aid · Collaboration</em></div>
+      <div class="scale">
+        <div class="chip"      style="background:#EBF7F7"><span class="step">50</span><span class="hex">EBF7F7</span></div>
+        <div class="chip"      style="background:#D0E5E6"><span class="step">100</span><span class="hex">D0E5E6</span></div>
+        <div class="chip"      style="background:#A3D8DC"><span class="step">200</span><span class="hex">A3D8DC</span></div>
+        <div class="chip"      style="background:#78C6CB"><span class="step">300</span><span class="hex">78C6CB</span></div>
+        <div class="chip"      style="background:#5EBBC1"><span class="step">400</span><span class="hex">5EBBC1</span></div>
+        <div class="chip dark" style="background:#36AAB2"><span class="step">500</span><span class="hex">36AAB2</span></div>
+        <div class="chip dark" style="background:#319BA2"><span class="step">600</span><span class="hex">319BA2</span></div>
+        <div class="chip dark" style="background:#26797E"><span class="step">700</span><span class="hex">26797E</span></div>
+        <div class="chip dark" style="background:#1E5E62"><span class="step">800</span><span class="hex">1E5E62</span></div>
+        <div class="chip dark" style="background:#17474B"><span class="step">900</span><span class="hex">17474B</span></div>
+      </div>
+    </div>
+    <div class="role-row">
+      <div class="lbl"><strong>Curious Yellow</strong><em>Discovery · Education</em></div>
+      <div class="scale">
+        <div class="chip"      style="background:#FBF2EA"><span class="step">50</span><span class="hex">FBF2EA</span></div>
+        <div class="chip"      style="background:#F3D5BD"><span class="step">100</span><span class="hex">F3D5BD</span></div>
+        <div class="chip"      style="background:#EEC19D"><span class="step">200</span><span class="hex">EEC19D</span></div>
+        <div class="chip"      style="background:#E6A571"><span class="step">300</span><span class="hex">E6A571</span></div>
+        <div class="chip"      style="background:#E19455"><span class="step">400</span><span class="hex">E19455</span></div>
+        <div class="chip dark" style="background:#D9792B"><span class="step">500</span><span class="hex">D9792B</span></div>
+        <div class="chip dark" style="background:#C56E27"><span class="step">600</span><span class="hex">C56E27</span></div>
+        <div class="chip dark" style="background:#9A561F"><span class="step">700</span><span class="hex">9A561F</span></div>
+        <div class="chip dark" style="background:#774318"><span class="step">800</span><span class="hex">774318</span></div>
+        <div class="chip dark" style="background:#5B3312"><span class="step">900</span><span class="hex">5B3312</span></div>
+      </div>
+    </div>
+    <div class="role-row">
+      <div class="lbl"><strong>Progress Green</strong><em>Create · In-flight</em></div>
+      <div class="scale">
+        <div class="chip"      style="background:#ECF2F2"><span class="step">50</span><span class="hex">ECF2F2</span></div>
+        <div class="chip"      style="background:#C4D8D8"><span class="step">100</span><span class="hex">C4D8D8</span></div>
+        <div class="chip"      style="background:#A7C5C5"><span class="step">200</span><span class="hex">A7C5C5</span></div>
+        <div class="chip"      style="background:#7FAAAA"><span class="step">300</span><span class="hex">7FAAAA</span></div>
+        <div class="chip dark" style="background:#669999"><span class="step">400</span><span class="hex">669999</span></div>
+        <div class="chip dark" style="background:#408080"><span class="step">500</span><span class="hex">408080</span></div>
+        <div class="chip dark" style="background:#3A7474"><span class="step">600</span><span class="hex">3A7474</span></div>
+        <div class="chip dark" style="background:#2D5B5B"><span class="step">700</span><span class="hex">2D5B5B</span></div>
+        <div class="chip dark" style="background:#234646"><span class="step">800</span><span class="hex">234646</span></div>
+        <div class="chip dark" style="background:#1B3636"><span class="step">900</span><span class="hex">1B3636</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+</body></html>

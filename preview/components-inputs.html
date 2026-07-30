@@ -1,0 +1,241 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Components — Form inputs</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .card, .card * { font-family: 'Titillium Web', system-ui, sans-serif; }
+  body { background: var(--paper); }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 22px; }
+  .grid .span2 { grid-column: 1 / -1; }
+  .field { display: flex; flex-direction: column; gap: 6px; position: relative; }
+  .lab { font-size: 12px; color: var(--color-fg); font-weight: 600; }
+  .help { font-size: 11px; color: var(--color-fg-muted); }
+  .help.err { color: var(--danger-500); }
+
+  /* Base control: 4px internal padding, 1px neutral border, 8px radius */
+  .input, .select, .textarea, .control {
+    font-family: 'Titillium Web', system-ui, sans-serif;
+    font-size: 14px; color: var(--color-fg);
+    padding: 4px 8px;
+    background: #FFFFFF;
+    border: 1px solid #C9C8C5;
+    border-radius: 4px;
+    width: 100%;
+    line-height: 1.4;
+    box-sizing: border-box;
+    transition: border-color 140ms ease, box-shadow 140ms ease, background 140ms ease;
+  }
+  .input { height: 32px; }
+  .input:focus, .input.focus,
+  .select:focus, .select.focus,
+  .textarea:focus, .textarea.focus,
+  .control.focus {
+    border-color: #36AAB2;
+    box-shadow: 0 0 0 2px rgba(54, 170, 178, 0.25);
+    outline: none;
+  }
+  .input.error { border-color: var(--danger-500); }
+  .input:disabled, .input.disabled,
+  .control.disabled {
+    background: #F2F2F2;
+    color: #4A4A48;
+    cursor: not-allowed;
+  }
+
+  .select { appearance: none; padding-right: 28px;
+    background-image: linear-gradient(45deg, transparent 50%, #4A4A48 50%), linear-gradient(135deg, #4A4A48 50%, transparent 50%);
+    background-position: calc(100% - 14px) center, calc(100% - 9px) center;
+    background-size: 5px 5px; background-repeat: no-repeat; height: 32px;
+  }
+
+  .textarea { padding: 4px 8px; min-height: 64px; resize: vertical; }
+
+  /* Wrapped controls — control acts like an input shell with a slot for an icon button */
+  .control { display: flex; align-items: center; gap: 6px; padding: 0 4px 0 8px; height: 32px; }
+  .control input.bare {
+    flex: 1; min-width: 0; border: 0; outline: 0; background: transparent;
+    font-family: inherit; font-size: 14px; color: inherit;
+    padding: 4px 0; line-height: 1.4;
+  }
+  .control input.bare:disabled { color: #4A4A48; }
+  .icon-btn {
+    width: 24px; height: 24px; flex: none;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: transparent; border: 0; border-radius: 4px;
+    color: #4A4A48; cursor: pointer;
+  }
+  .icon-btn:hover { background: rgba(18,57,89,0.06); color: #123959; }
+  .control.disabled .icon-btn { display: none; }
+
+  /* Search popover */
+  .pop {
+    position: absolute; left: 0; right: 0; top: 56px; z-index: 5;
+    background: #FFFFFF; border: 1px solid #C9C8C5;
+    border-radius: 4px; box-shadow: 0 8px 24px rgba(18,57,89,0.12);
+    padding: 6px;
+  }
+  .pop .search {
+    display: flex; align-items: center; gap: 6px;
+    padding: 4px 8px; border: 1px solid #36AAB2;
+    border-radius: 4px; box-shadow: 0 0 0 2px rgba(54, 170, 178, 0.25);
+    height: 32px; margin-bottom: 6px;
+  }
+  .pop .search input {
+    flex: 1; border: 0; outline: 0; background: transparent;
+    font-family: inherit; font-size: 14px;
+  }
+  .pop ul { list-style: none; padding: 0; margin: 0; max-height: 168px; overflow: auto; }
+  .pop li { padding: 6px 8px; border-radius: 4px; font-size: 13px; cursor: pointer; color: var(--color-fg); }
+  .pop li:hover, .pop li.active { background: #EBF7F7; color: #1E5E62; }
+  .pop li .meta { color: var(--color-fg-muted); font-size: 11px; margin-left: 6px; }
+
+  /* Rich text */
+  .rich { display: flex; flex-direction: column; padding: 0; }
+  .rich-toolbar {
+    display: flex; align-items: center; gap: 2px;
+    padding: 4px 6px;
+    border-bottom: 1px solid #E6E6E4;
+    color: #4A4A48;
+  }
+  .rich-toolbar button {
+    width: 26px; height: 26px;
+    border: 0; background: transparent; border-radius: 4px;
+    font-family: inherit; font-size: 13px; cursor: pointer; color: inherit;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  .rich-toolbar button:hover { background: rgba(18,57,89,0.06); color: #123959; }
+  .rich-toolbar button.active { background: #EBF7F7; color: #1E5E62; }
+  .rich-toolbar .sep { width: 1px; height: 16px; background: #E6E6E4; margin: 0 4px; }
+  .rich-body {
+    padding: 8px 10px; min-height: 96px; font-size: 14px; color: var(--color-fg);
+    line-height: 1.5;
+  }
+  .rich-body p { margin: 0 0 6px; }
+  .rich-body strong { font-weight: 700; }
+  .rich-body em { font-style: italic; }
+  .rich-body ul { margin: 4px 0 0 18px; }
+
+  .check { display: flex; align-items: center; gap: 8px; font-size: 14px; }
+  .check input { accent-color: #123959; width: 16px; height: 16px; }
+</style>
+</head><body>
+<div class="card">
+  <div class="grid">
+
+    <!-- Standard text -->
+    <div class="field">
+      <label class="lab">Email</label>
+      <input class="input" placeholder="you@company.com" value="captain@star.no">
+      <span class="help">We'll send a magic link.</span>
+    </div>
+
+    <!-- Focus -->
+    <div class="field">
+      <label class="lab">Password</label>
+      <input class="input focus" type="password" value="••••••••">
+      <span class="help">Focus state — 1px <code>#36AAB2</code> border + 2px aqua halo.</span>
+    </div>
+
+    <!-- Error -->
+    <div class="field">
+      <label class="lab">Vessel name</label>
+      <input class="input error" value="Polaris">
+      <span class="help err">A vessel with this name already exists.</span>
+    </div>
+
+    <!-- Auto-populated, disabled, #F2F2F2 -->
+    <div class="field">
+      <label class="lab">Created by · auto</label>
+      <input class="input disabled" value="System · 24.04.2026 14:02" disabled>
+      <span class="help">Auto-populated, not editable.</span>
+    </div>
+
+    <!-- Pencil + search popover -->
+    <div class="field">
+      <label class="lab">Assigned reviewer</label>
+      <div class="control focus">
+        <input class="bare" value="Tomas Berge" readonly>
+        <button class="icon-btn" title="Edit / search">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg>
+        </button>
+      </div>
+      <div class="pop">
+        <div class="search">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4A4A48" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <input placeholder="Search people…" value="Tom">
+        </div>
+        <ul>
+          <li class="active">Tomas Berge<span class="meta">Reviewer · Northern fleet</span></li>
+          <li>Tomine Dahl<span class="meta">Reviewer</span></li>
+          <li>Tom Eriksen<span class="meta">Approver</span></li>
+          <li>Tomáš Krieger<span class="meta">Reviewer · Beta</span></li>
+        </ul>
+      </div>
+      <span class="help" style="margin-top: 168px">Click the pencil to open a search popover.</span>
+    </div>
+
+    <!-- Date picker -->
+    <div class="field">
+      <label class="lab">Due date</label>
+      <div class="control">
+        <input class="bare" value="28.11.2025" placeholder="DD.MM.YYYY">
+        <button class="icon-btn" title="Open calendar">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg>
+        </button>
+      </div>
+      <span class="help">Same height as standard inputs.</span>
+    </div>
+
+    <!-- Select -->
+    <div class="field">
+      <label class="lab">Operator</label>
+      <select class="select"><option>Northern Star Lines</option></select>
+    </div>
+
+    <!-- Inline notes -->
+    <div class="field">
+      <label class="lab">Notes</label>
+      <textarea class="textarea" rows="2">Departure delayed by weather.</textarea>
+    </div>
+
+    <!-- Rich text — full width -->
+    <div class="field span2">
+      <label class="lab">Briefing</label>
+      <div class="control rich">
+        <div class="rich-toolbar">
+          <button class="active" title="Bold"><b>B</b></button>
+          <button title="Italic"><i>I</i></button>
+          <button title="Underline" style="text-decoration:underline">U</button>
+          <span class="sep"></span>
+          <button title="Heading">H1</button>
+          <button title="Heading">H2</button>
+          <span class="sep"></span>
+          <button title="Bulleted list">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="5" cy="6" r="1"/><circle cx="5" cy="12" r="1"/><circle cx="5" cy="18" r="1"/><path d="M9 6h11M9 12h11M9 18h11"/></svg>
+          </button>
+          <button title="Numbered list">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h2v4M4 14h2v4M9 6h11M9 12h11M9 18h11"/></svg>
+          </button>
+          <span class="sep"></span>
+          <button title="Link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>
+          </button>
+        </div>
+        <div class="rich-body" contenteditable="true">
+          <p><strong>Pre-departure</strong>: confirm bunker delivery and harbour pilot ETA.</p>
+          <ul><li>Cross-check crew rotation against <em>RDL-2049</em>.</li><li>Notify operations if interval &gt; 6 days.</li></ul>
+        </div>
+      </div>
+      <span class="help">Rich text — bold, italic, lists, links.</span>
+    </div>
+
+    <!-- Checkboxes -->
+    <div class="field">
+      <label class="lab">Notifications</label>
+      <label class="check"><input type="checkbox" checked> Email me when this changes</label>
+      <label class="check"><input type="checkbox"> Subscribe to weekly digest</label>
+    </div>
+
+  </div>
+</div>
+</body></html>

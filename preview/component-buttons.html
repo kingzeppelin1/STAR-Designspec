@@ -1,0 +1,64 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Components — Buttons</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  body { background: var(--bg); }
+  .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 12px; }
+  .row:last-child { margin-bottom: 0; }
+  .label { width: 84px; flex: 0 0 84px; }
+
+  .btn {
+    font-family: var(--font-ui);
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1;
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: background var(--duration-fast) var(--ease-standard),
+                color var(--duration-fast) var(--ease-standard),
+                border-color var(--duration-fast) var(--ease-standard);
+  }
+  .btn-primary { background: var(--marine-700); color: var(--paper); }
+  .btn-primary.hover { background: var(--marine-900); }
+  .btn-primary.disabled { background: var(--marine-100); color: var(--marine-400); cursor: not-allowed; }
+
+  .btn-secondary { background: var(--paper); color: var(--color-fg); border-color: var(--neutral-300); }
+  .btn-secondary.hover { background: var(--surface); }
+
+  .btn-ghost { background: transparent; color: var(--marine-700); }
+  .btn-ghost.hover { background: var(--marine-50); }
+
+  .btn-danger { background: var(--danger-400); color: var(--paper); }
+  .btn-danger.hover { background: var(--danger-500); }
+
+  .btn-sm { font-size: 12px; padding: 6px 10px; }
+  .btn-lg { font-size: 16px; padding: 12px 20px; }
+</style>
+</head><body>
+<div class="card">
+  <div class="row"><span class="label">Primary</span>
+    <button class="btn btn-primary">Save changes</button>
+    <button class="btn btn-primary hover">Hover</button>
+    <button class="btn btn-primary disabled">Disabled</button>
+  </div>
+  <div class="row"><span class="label">Secondary</span>
+    <button class="btn btn-secondary">Cancel</button>
+    <button class="btn btn-secondary hover">Hover</button>
+  </div>
+  <div class="row"><span class="label">Ghost</span>
+    <button class="btn btn-ghost">Learn more</button>
+    <button class="btn btn-ghost hover">Hover</button>
+  </div>
+  <div class="row"><span class="label">Danger</span>
+    <button class="btn btn-danger">Delete</button>
+    <button class="btn btn-danger hover">Hover</button>
+  </div>
+  <div class="row"><span class="label">Sizes</span>
+    <button class="btn btn-primary btn-sm">Small</button>
+    <button class="btn btn-primary">Default</button>
+    <button class="btn btn-primary btn-lg">Large</button>
+  </div>
+</div>
+</body></html>

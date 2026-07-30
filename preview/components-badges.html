@@ -1,0 +1,62 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Components — Badges & chips</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  /* Single family: Titillium Web for everything in this card */
+  .card, .card * { font-family: 'Titillium Web', system-ui, sans-serif; }
+
+  .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-bottom: 12px; }
+  .row:last-child { margin-bottom: 0; }
+  .label { width: 86px; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-fg-muted); font-weight: 600; }
+
+  /* Badge rule: bg = lightest shade (50), text + border = same hue 70% darker (800).
+     Pill shape kept so badges read as state, not as filter chips. */
+  .badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; font-weight: 600; padding: 3px 10px;
+    border-radius: 999px;
+    border: 1px solid currentColor;   /* 1px stroke matches text color */
+    line-height: 1.4;
+  }
+  .badge .dot { width: 6px; height: 6px; border-radius: 999px; background: currentColor; }
+
+  /* Filter chips: same construction logic, neutral hue, square corners */
+  .chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; font-weight: 500;
+    padding: 3px 10px; border-radius: 4px;
+    background: var(--neutral-50);
+    color: var(--neutral-800);
+    border: 1px solid var(--neutral-800);
+    line-height: 1.4;
+  }
+  .chip.removable::after { content: "×"; margin-left: 2px; cursor: pointer; opacity: .7; }
+  .chip.add { background: transparent; border-style: dashed; color: var(--color-fg-muted); border-color: var(--color-fg-muted); }
+</style>
+</head><body>
+<div class="card">
+  <div class="row">
+    <span class="label">Status</span>
+    <span class="badge" style="background:var(--success-50); color:var(--success-800)"><span class="dot"></span>Delivered</span>
+    <span class="badge" style="background:var(--green-50);   color:var(--green-800)"  ><span class="dot"></span>In transit</span>
+    <span class="badge" style="background:var(--warning-50); color:var(--warning-800)"><span class="dot"></span>Delayed</span>
+    <span class="badge" style="background:var(--danger-50);  color:var(--danger-800)" ><span class="dot"></span>Failed</span>
+    <span class="badge" style="background:var(--neutral-50); color:var(--neutral-800)"><span class="dot"></span>Draft</span>
+  </div>
+  <div class="row">
+    <span class="label">Roles</span>
+    <span class="badge" style="background:var(--aqua-50);   color:var(--aqua-800)">Shared</span>
+    <span class="badge" style="background:var(--brown-50);  color:var(--brown-800)">Archived</span>
+    <span class="badge" style="background:var(--yellow-50); color:var(--yellow-800)">Beta</span>
+    <span class="badge" style="background:var(--pink-50);   color:var(--pink-800)">Featured</span>
+    <span class="badge" style="background:var(--marine-50); color:var(--marine-800)">Official</span>
+  </div>
+  <div class="row">
+    <span class="label">Filters</span>
+    <span class="chip removable">Northern fleet</span>
+    <span class="chip removable">2026</span>
+    <span class="chip removable">Active</span>
+    <span class="chip add">+ Add filter</span>
+  </div>
+</div>
+</body></html>

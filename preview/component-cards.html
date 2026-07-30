@@ -1,0 +1,47 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Components — Cards</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  body { background: var(--bg); }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .card-ui {
+    background: var(--paper);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .card-ui.lifted { box-shadow: var(--shadow-1); }
+  .head { display: flex; justify-content: space-between; align-items: center; }
+  .head h4 { font-size: 15px; font-weight: 600; margin: 0; color: var(--color-fg); }
+  .meta { font-size: 11px; color: var(--color-fg-muted); }
+  .body { font-size: 13px; color: var(--color-fg); line-height: 1.55; margin: 0; }
+  .pill { font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 999px; }
+  .pill.collab { background: var(--aqua-50); color: var(--aqua-700); }
+  .pill.progress { background: var(--green-50); color: var(--green-700); }
+  hr { border: 0; border-top: 1px solid var(--color-divider); margin: 0; }
+  .actions { display: flex; gap: 8px; }
+  .btn { font-size: 12px; font-weight: 600; padding: 6px 10px; border-radius: 6px; border: 1px solid transparent; cursor: pointer; }
+  .btn.p { background: var(--marine-700); color: var(--paper); }
+  .btn.s { background: var(--paper); border-color: var(--neutral-300); color: var(--color-fg); }
+</style>
+</head><body>
+<div class="card">
+  <div class="grid">
+    <div class="card-ui">
+      <div class="head"><h4>MV Northern Star</h4><span class="pill progress">In transit</span></div>
+      <p class="body">En route from Rotterdam to Oslo. ETA tomorrow at 14:20.</p>
+      <hr>
+      <div class="meta">Updated 3 min ago</div>
+    </div>
+    <div class="card-ui lifted">
+      <div class="head"><h4>Q2 fleet review</h4><span class="pill collab">Shared</span></div>
+      <p class="body">Three vessels to discuss. Maria added notes on the Bergen route last night.</p>
+      <div class="actions">
+        <button class="btn p">Open</button>
+        <button class="btn s">Mark read</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body></html>

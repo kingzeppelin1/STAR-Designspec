@@ -1,0 +1,67 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Components — Chips & badges</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  body { background: var(--bg); }
+  .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 12px; }
+  .row:last-child { margin-bottom: 0; }
+  .label { width: 100px; flex: 0 0 100px; }
+
+  .chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; line-height: 1; font-weight: 600;
+    padding: 6px 10px; border-radius: 999px;
+    background: var(--surface);
+    color: var(--color-fg);
+    border: 1px solid var(--color-border);
+  }
+  .chip .dot { width: 6px; height: 6px; border-radius: 999px; background: var(--color-fg); }
+
+  .chip.collab  { background: var(--aqua-50);   color: var(--aqua-700);   border-color: transparent; }
+  .chip.collab .dot { background: var(--aqua-400); }
+  .chip.constant { background: var(--brown-50); color: var(--brown-700); border-color: transparent; }
+  .chip.constant .dot { background: var(--brown-400); }
+  .chip.curious { background: var(--yellow-50); color: var(--yellow-700); border-color: transparent; }
+  .chip.curious .dot { background: var(--yellow-400); }
+  .chip.progress{ background: var(--green-50);  color: var(--green-700);  border-color: transparent; }
+  .chip.progress .dot { background: var(--green-400); }
+
+  .chip.danger  { background: var(--danger-50);  color: var(--danger-700);  border-color: transparent; }
+  .chip.danger .dot  { background: var(--danger-400); }
+  .chip.success { background: var(--success-50); color: var(--success-700); border-color: transparent; }
+  .chip.success .dot { background: var(--success-400); }
+  .chip.warning { background: var(--warning-50); color: var(--warning-700); border-color: transparent; }
+  .chip.warning .dot { background: var(--warning-400); }
+
+  .badge {
+    display: inline-flex; min-width: 18px; height: 18px; padding: 0 6px;
+    font-size: 11px; line-height: 1; font-weight: 700;
+    align-items: center; justify-content: center;
+    border-radius: 999px; background: var(--marine-700); color: var(--paper);
+  }
+</style>
+</head><body>
+<div class="card">
+  <div class="row"><span class="label">Roles</span>
+    <span class="chip collab"><span class="dot"></span>Shared</span>
+    <span class="chip constant"><span class="dot"></span>Archived</span>
+    <span class="chip curious"><span class="dot"></span>Exploring</span>
+    <span class="chip progress"><span class="dot"></span>In transit</span>
+  </div>
+  <div class="row"><span class="label">Status</span>
+    <span class="chip success"><span class="dot"></span>Delivered</span>
+    <span class="chip warning"><span class="dot"></span>Delayed</span>
+    <span class="chip danger"><span class="dot"></span>Blocked</span>
+  </div>
+  <div class="row"><span class="label">Neutral</span>
+    <span class="chip">Draft</span>
+    <span class="chip">Internal</span>
+    <span class="chip">v2.4</span>
+  </div>
+  <div class="row"><span class="label">Counts</span>
+    <span class="badge">3</span>
+    <span class="badge">12</span>
+    <span class="badge">99+</span>
+  </div>
+</div>
+</body></html>

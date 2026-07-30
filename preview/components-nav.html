@@ -1,0 +1,64 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Components — Tabs & nav</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .card, .card * { font-family: 'Titillium Web', system-ui, sans-serif; }
+  body { background: var(--bg); }
+  .col { display: flex; flex-direction: column; gap: 18px; }
+  .label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-fg-muted); font-weight: 600; margin-bottom: 6px; }
+
+  .tabs { display: flex; gap: 0; border-bottom: 1px solid var(--color-border); }
+  .tab {
+    padding: 10px 14px; font-size: 13px; color: var(--color-fg-muted);
+    border-bottom: 2px solid transparent; cursor: pointer;
+    margin-bottom: -1px;
+  }
+  .tab.active { color: var(--marine-700); border-bottom-color: var(--marine-700); font-weight: 600; }
+  .tab:hover:not(.active) { color: var(--color-fg); }
+
+  .seg {
+    display: inline-flex; padding: 3px; gap: 2px;
+    background: var(--surface); border-radius: 8px;
+  }
+  .seg button {
+    border: 0; background: transparent; cursor: pointer;
+    font-family: var(--font-ui); font-size: 12px; font-weight: 600;
+    padding: 6px 12px; border-radius: 6px; color: var(--neutral-700);
+  }
+  .seg button.active { background: var(--paper); color: var(--color-fg); box-shadow: var(--shadow-1); }
+
+  .breadcrumb { display: flex; gap: 6px; align-items: center; font-size: 12px; color: var(--color-fg-muted); }
+  .breadcrumb a { color: var(--color-fg-muted); border: 0; }
+  .breadcrumb a:hover { color: var(--color-fg); }
+  .breadcrumb .here { color: var(--color-fg); font-weight: 600; }
+  .breadcrumb .sep { opacity: .5; }
+</style>
+</head><body>
+<div class="card">
+  <div class="col">
+    <div>
+      <div class="label">Tabs</div>
+      <div class="tabs">
+        <span class="tab active">Overview</span>
+        <span class="tab">Shipments</span>
+        <span class="tab">Crew</span>
+        <span class="tab">Billing</span>
+      </div>
+    </div>
+    <div>
+      <div class="label">Segmented</div>
+      <div class="seg">
+        <button class="active">Day</button><button>Week</button><button>Month</button><button>Year</button>
+      </div>
+    </div>
+    <div>
+      <div class="label">Breadcrumb</div>
+      <div class="breadcrumb">
+        <a href="#">Fleet</a><span class="sep">/</span>
+        <a href="#">Northern</a><span class="sep">/</span>
+        <span class="here">Polaris II</span>
+      </div>
+    </div>
+  </div>
+</div>
+</body></html>

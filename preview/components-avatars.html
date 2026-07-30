@@ -1,0 +1,52 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Components — Avatars & people</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .row { display: flex; gap: 16px; align-items: center; margin-bottom: 14px; flex-wrap: wrap; }
+  .row:last-child { margin-bottom: 0; }
+  .label { width: 80px; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-fg-muted); font-weight: 600; }
+  .ava {
+    display: inline-flex; align-items: center; justify-content: center;
+    border-radius: 999px; font-weight: 600; color: var(--paper);
+    font-family: var(--font-ui); user-select: none;
+    border: 2px solid var(--paper);
+  }
+  .stack { display: inline-flex; }
+  .stack .ava { margin-left: -8px; }
+  .stack .ava:first-child { margin-left: 0; }
+  .person { display: flex; gap: 10px; align-items: center; }
+  .person .who { display: flex; flex-direction: column; }
+  .person .who b { font-size: 13px; }
+  .person .who span { font-size: 11px; color: var(--color-fg-muted); }
+</style>
+</head><body>
+<div class="card">
+  <div class="row">
+    <span class="label">Sizes</span>
+    <span class="ava" style="width:24px;height:24px;font-size:10px;background:var(--marine-600)">EH</span>
+    <span class="ava" style="width:32px;height:32px;font-size:12px;background:var(--aqua-500)">MK</span>
+    <span class="ava" style="width:40px;height:40px;font-size:14px;background:var(--brown-500)">SO</span>
+    <span class="ava" style="width:56px;height:56px;font-size:18px;background:var(--pink-500)">JL</span>
+  </div>
+  <div class="row">
+    <span class="label">Stack</span>
+    <div class="stack">
+      <span class="ava" style="width:32px;height:32px;font-size:12px;background:var(--marine-600)">EH</span>
+      <span class="ava" style="width:32px;height:32px;font-size:12px;background:var(--aqua-500)">MK</span>
+      <span class="ava" style="width:32px;height:32px;font-size:12px;background:var(--brown-500)">SO</span>
+      <span class="ava" style="width:32px;height:32px;font-size:12px;background:var(--neutral-400); color:var(--color-fg)">+4</span>
+    </div>
+  </div>
+  <div class="row">
+    <span class="label">Person</span>
+    <div class="person">
+      <span class="ava" style="width:36px;height:36px;font-size:13px;background:var(--marine-600)">EH</span>
+      <div class="who"><b>Erika Holm</b><span>Captain · Polaris II</span></div>
+    </div>
+    <div class="person">
+      <span class="ava" style="width:36px;height:36px;font-size:13px;background:var(--aqua-500)">MK</span>
+      <div class="who"><b>Mira Kraft</b><span>Logistics lead</span></div>
+    </div>
+  </div>
+</div>
+</body></html>

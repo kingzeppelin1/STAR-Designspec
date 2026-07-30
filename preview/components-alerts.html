@@ -1,0 +1,42 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Components — Alerts & banners</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .card, .card * { font-family: 'Titillium Web', system-ui, sans-serif; }
+  .col { display: flex; flex-direction: column; gap: 10px; }
+  .alert {
+    display: grid; grid-template-columns: 24px 1fr auto; gap: 12px;
+    align-items: flex-start; padding: 12px 14px;
+    border-radius: 8px; border: 1px solid;
+  }
+  .alert .ico {
+    width: 22px; height: 22px; border-radius: 999px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700; color: var(--paper);
+  }
+  .alert h5 { margin: 0; font-size: 13px; font-weight: 600; line-height: 1.3; }
+  .alert p  { margin: 2px 0 0; font-size: 12px; line-height: 1.5; color: var(--color-fg-muted); }
+  .alert .x { font-size: 16px; color: var(--color-fg-muted); cursor: pointer; line-height: 1; }
+  .a-info { background: var(--marine-50); border-color: var(--marine-100); }
+  .a-info .ico { background: var(--marine-700); }
+  .a-info h5 { color: var(--marine-900); }
+  .a-success { background: var(--success-50); border-color: var(--success-100); }
+  .a-success .ico { background: var(--success-400); }
+  .a-success h5 { color: var(--success-700); }
+  .a-warn { background: var(--warning-50); border-color: var(--warning-100); }
+  .a-warn .ico { background: var(--warning-400); }
+  .a-warn h5 { color: var(--warning-700); }
+  .a-danger { background: var(--danger-50); border-color: var(--danger-100); }
+  .a-danger .ico { background: var(--danger-400); }
+  .a-danger h5 { color: var(--danger-700); }
+</style>
+</head><body>
+<div class="card">
+  <div class="col">
+    <div class="alert a-info"><span class="ico">i</span><div><h5>Schema migration scheduled</h5><p>Tomorrow, 02:00 UTC. Read-only for ~3 minutes.</p></div><span class="x">×</span></div>
+    <div class="alert a-success"><span class="ico">✓</span><div><h5>Manifest filed</h5><p>Customs received your manifest at 14:02.</p></div><span class="x">×</span></div>
+    <div class="alert a-warn"><span class="ico">!</span><div><h5>Connection unstable</h5><p>We're retrying. Last sync 4 minutes ago.</p></div><span class="x">×</span></div>
+    <div class="alert a-danger"><span class="ico">!</span><div><h5>Couldn't save</h5><p>That email's already in use. Try signing in instead.</p></div><span class="x">×</span></div>
+  </div>
+</div>
+</body></html>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Components — Tables / list rows</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .card, .card * { font-family: 'Titillium Web', system-ui, sans-serif; }
+  body { background: var(--paper); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; font-weight: 600; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-fg-muted); padding: 10px 12px; border-bottom: 1px solid var(--color-border); }
+  td { padding: 12px; border-bottom: 1px solid var(--color-divider); color: var(--color-fg); }
+  tr:last-child td { border-bottom: 0; }
+  tr.hover td { background: var(--surface); }
+  .badge { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 999px; border: 1px solid currentColor; }
+  .badge .dot { width: 6px; height: 6px; border-radius: 999px; background: currentColor; }
+  .muted { color: var(--color-fg-muted); }
+  .num { font-variant-numeric: tabular-nums; text-align: right; }
+</style>
+</head><body>
+<div class="card">
+  <table>
+    <thead><tr><th>Vessel</th><th>Route</th><th>Status</th><th class="num">TEU</th><th>ETA</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Polaris II</strong></td><td class="muted">Tromsø → Rotterdam</td>
+        <td><span class="badge" style="background:var(--green-50); color:var(--green-800)"><span class="dot"></span>In transit</span></td>
+        <td class="num">412</td><td class="muted">14 May</td></tr>
+      <tr class="hover"><td><strong>Sirius</strong></td><td class="muted">Bergen → Hamburg</td>
+        <td><span class="badge" style="background:var(--success-50); color:var(--success-800)"><span class="dot"></span>Delivered</span></td>
+        <td class="num">288</td><td class="muted">—</td></tr>
+      <tr><td><strong>Vega</strong></td><td class="muted">Oslo → Aarhus</td>
+        <td><span class="badge" style="background:var(--warning-50); color:var(--warning-800)"><span class="dot"></span>Delayed</span></td>
+        <td class="num">96</td><td class="muted">15 May</td></tr>
+      <tr><td><strong>Capella</strong></td><td class="muted">Stavanger → Antwerp</td>
+        <td><span class="badge" style="background:var(--neutral-50); color:var(--neutral-800)"><span class="dot"></span>Draft</span></td>
+        <td class="num">—</td><td class="muted">—</td></tr>
+    </tbody>
+  </table>
+</div>
+</body></html>

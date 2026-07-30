@@ -1,0 +1,53 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Components — Buttons</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 12px; }
+  .row:last-child { margin-bottom: 0; }
+  .label { width: 80px; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-fg-muted); font-weight: 600; }
+  .card, .card * { font-family: 'Titillium Web', system-ui, sans-serif; }
+  .btn {
+    font-family: 'Titillium Web', system-ui, sans-serif;
+    font-size: 14px; font-weight: 600; line-height: 1;
+    padding: 10px 16px; border-radius: 8px; border: 1px solid transparent;
+    cursor: pointer; transition: background var(--duration-fast) var(--ease-standard), color var(--duration-fast) var(--ease-standard), border-color var(--duration-fast) var(--ease-standard);
+  }
+  .btn.primary { background: var(--marine-700); color: var(--paper); }
+  .btn.primary.hover { background: var(--marine-900); }
+  .btn.secondary { background: var(--paper); color: var(--marine-700); border-color: var(--marine-200); }
+  .btn.secondary.hover { background: var(--marine-50); }
+  .btn.ghost { background: transparent; color: var(--marine-700); }
+  .btn.ghost.hover { background: var(--marine-50); }
+  .btn.danger { background: var(--danger-400); color: var(--paper); }
+  .btn.disabled { background: var(--surface); color: var(--neutral-400); cursor: not-allowed; }
+  .btn.sm { padding: 6px 10px; font-size: 12px; border-radius: 6px; }
+  .btn.lg { padding: 14px 22px; font-size: 16px; border-radius: 8px; }
+</style>
+</head><body>
+<div class="card">
+  <div class="row">
+    <span class="label">Primary</span>
+    <button class="btn primary">Save changes</button>
+    <button class="btn primary hover">Hover</button>
+    <button class="btn primary disabled">Disabled</button>
+  </div>
+  <div class="row">
+    <span class="label">Secondary</span>
+    <button class="btn secondary">Invite people</button>
+    <button class="btn secondary hover">Hover</button>
+  </div>
+  <div class="row">
+    <span class="label">Ghost</span>
+    <button class="btn ghost">Cancel</button>
+    <button class="btn ghost hover">Hover</button>
+  </div>
+  <div class="row">
+    <span class="label">Danger</span>
+    <button class="btn danger">Delete</button>
+    <span class="label" style="margin-left:24px">Sizes</span>
+    <button class="btn primary sm">Small</button>
+    <button class="btn primary">Default</button>
+    <button class="btn primary lg">Large</button>
+  </div>
+</div>
+</body></html>
